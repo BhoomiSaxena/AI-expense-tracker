@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from utils import load_data, clean_data, add_category, get_summary, category_summary, is_income_category
-from expense_tracker.llm_service import answer_finance_question
+#from expense_tracker.llm_service import answer_finance_question
 
 st.title("💰 AI Expense Tracker")
 
@@ -51,28 +51,28 @@ if uploaded_file:
     else:
         st.success("Great! You are managing your finances well.")
 
-    st.subheader("🤖 Ask Questions With RAG")
-    st.caption("Ask things like: where I spend the most money, or how to manage spending better.")
+   #st.subheader("🤖 Ask Questions With RAG")
+    #st.caption("Ask things like: where I spend the most money, or how to manage spending better.")
 
-    user_question = st.text_input("Ask about your spending")
-    if st.button("Generate Response"):
-        if not user_question.strip():
-            st.warning("Please enter a question first.")
-        else:
-            with st.spinner("Searching your data and knowledge base..."):
-                result = answer_finance_question(
-                    df=df,
-                    question=user_question,
-                    knowledge_base_dir="knowledge_base",
-                    persist_directory=".chromadb",
-                )
+    #user_question = st.text_input("Ask about your spending")
+    #if st.button("Generate Response"):
+        #if not user_question.strip():
+            #st.warning("Please enter a question first.")
+        #else:
+            #with st.spinner("Searching your data and knowledge base..."):
+                #result = answer_finance_question(
+                    #df=df,
+                    #question=user_question,
+                    #knowledge_base_dir="knowledge_base",
+                    #persist_directory=".chromadb",
+                #)
 
-            st.markdown("### Answer")
-            st.write(result["answer"])
+            #st.markdown("### Answer")
+            #st.write(result["answer"])
 
-            with st.expander("Show retrieved context"):
-                for item in result["context"]:
-                    st.markdown(f"**Source:** {item['source']}")
-                    st.write(item["text"])
-                    st.markdown("---")
+            #with st.expander("Show retrieved context"):
+                #for item in result["context"]:
+                    #st.markdown(f"**Source:** {item['source']}")
+                    #st.write(item["text"])
+                    #st.markdown("---")
 
