@@ -8,10 +8,10 @@ st.title("💰 AI Expense Tracker")
 uploaded_file = st.file_uploader("Upload your bank CSV", type=["csv"])
 
 if uploaded_file:
-df = load_data(uploaded_file)
-df = clean_data(df)
-df = add_category(df)
-df.to_csv("processed_data.csv", index=False)
+    df = load_data(uploaded_file)
+    df = clean_data(df)
+    df = add_category(df)
+    df.to_csv("processed_data.csv", index=False)
 
 ```
 st.subheader("📄 Raw Data")
