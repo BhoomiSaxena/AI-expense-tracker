@@ -71,3 +71,35 @@ if uploaded_file:
     else:
         st.success("Great! You are managing your finances well.")
 
+import os
+import google.generativeai as genai
+
+st.subheader("🤖 Ask AI About Your Spending")
+
+question = st.text_input("Ask a question about your expenses")
+
+if st.button("Generate Answer"):
+    if question:
+        try:
+            genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+            model = genai.GenerativeModel("gemini-1.5-flash")
+
+            context = f"""
+            Financial Summary:
+            Total Income: {income}
+            Total Expense: {expense}
+
+            Category Spending:
+            {cat_data.to_string()}
+
+            User Question:
+            {question}
+            """
+
+            response = model.generate_content(context)
+
+            st.write(response.text)
+
+        except Exception as e:
+            st.error(f"Error: {e}")
