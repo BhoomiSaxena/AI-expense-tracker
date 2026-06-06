@@ -1,9 +1,4 @@
 
-inside `app.py`. Those are not valid Python code.
-
-Replace your entire `app.py` with this:
-
-:::writing{variant="document" id="58172"}
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -75,11 +70,4 @@ if uploaded_file:
         st.info("Try reducing your expenses to save more.")
     else:
         st.success("Great! You are managing your finances well.")
-:::
 
-Then:
-1. Save `app.py`
-2. Commit changes to GitHub
-3. Render will automatically redeploy
-
-The indentation error should disappear. If a new error appears, send the screenshot and we'll fix the next one.
