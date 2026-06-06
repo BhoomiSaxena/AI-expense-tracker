@@ -14,8 +14,8 @@ if uploaded_file:
     df.to_csv("processed_data.csv", index=False)
 
 ```
-st.subheader("📄 Raw Data")
-st.write(df)
+    st.subheader("📄 Raw Data")
+    st.write(df)
 
 income, expense = get_summary(df)
 
